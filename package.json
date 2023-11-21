@@ -1,0 +1,79 @@
+{
+  "name": "vscode-12dpl",
+  "publisher": "kelly-lin",
+  "displayName": "12d Syntax Highlight",
+  "description": "Language services for the 12d programming language",
+  "repository": {
+    "url": "https://github.com/kelly-lin/vscode-12dpl"
+  },
+  "version": "0.0.0",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [],
+  "main": "./build/extension",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -b",
+    "watch": "tsc -b -w"
+  },
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Example configuration",
+      "properties": {
+        "languageServerExample.maxNumberOfProblems": {
+          "scope": "resource",
+          "type": "number",
+          "default": 100,
+          "description": "Controls the maximum number of problems produced by the server."
+        },
+        "languageServerExample.trace.server": {
+          "scope": "window",
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Traces the communication between VS Code and the language server."
+        }
+      }
+    },
+    "languages": [
+      {
+        "id": "12dpl",
+        "aliases": [
+          "4dpl"
+        ],
+        "extensions": [
+          ".4dm"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "12dpl",
+        "scopeName": "source.12dpl",
+        "path": "./syntaxes/12dpl.tmLanguage.json"
+      }
+    ]
+  },
+  "activationEvents": [
+    "onLanguage:plaintext"
+  ],
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1",
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-textdocument": "^1.0.11"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.3",
+    "@types/node": "^20.9.3",
+    "@types/vscode": "^1.84.2",
+    "js-yaml": "^3.13.1",
+    "typescript": "^5.3.2"
+  }
+}
