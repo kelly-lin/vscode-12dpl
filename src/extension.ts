@@ -19,6 +19,7 @@ export function activate(_context: ExtensionContext) {
     },
     debug: {
       command: DEV_CMD,
+      args: ["-d"],
     },
   };
   // Options to control the language client
