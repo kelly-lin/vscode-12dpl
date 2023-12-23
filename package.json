@@ -44,9 +44,6 @@
     "languages": [
       {
         "id": "12dpl",
-        "aliases": [
-          "4dpl"
-        ],
         "extensions": [
           ".4dm"
         ],
@@ -61,9 +58,6 @@
       }
     ]
   },
-  "activationEvents": [
-    "onLanguage:plaintext"
-  ],
   "dependencies": {
     "vscode-languageclient": "^9.0.1",
     "vscode-languageserver": "^9.0.1",
