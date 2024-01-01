@@ -1,8 +1,8 @@
 {
   "name": "vscode-12dpl",
   "publisher": "kelly-lin",
-  "displayName": "12d Syntax Highlight",
-  "description": "Language services for the 12d programming language",
+  "displayName": "12dpl",
+  "description": "12d programming language language support for Visual Studio Code",
   "repository": {
     "url": "https://github.com/kelly-lin/vscode-12dpl"
   },
