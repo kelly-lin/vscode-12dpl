@@ -10,7 +10,7 @@ let client: LanguageClient;
 
 // TODO: move this to config.
 const DEV_CMD =
-  "/Users/kelly.lin/Repos/repoman/github.com/kelly-lin/12d-lang-server/12d-lang-server";
+  "/Users/kelly.lin/Repos/repoman/github.com/kelly-lin/12d-lang-server/12dls";
 
 export function activate(_context: ExtensionContext) {
   const serverOptions: ServerOptions = {
