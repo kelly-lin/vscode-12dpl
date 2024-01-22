@@ -19,7 +19,7 @@ export function activate(_context: ExtensionContext) {
     },
     debug: {
       command: DEV_CMD,
-      args: ["-d"],
+      args: ["-d", "-i", "/Users/kelly.lin/Repos/repoman/github.com/kelly-lin/12d-lang-server/lang/includes"],
     },
   };
   // Options to control the language client
