@@ -35,6 +35,13 @@ Provide completion suggestions as you write your code.
 ![lib completion](./asset/doc/lib-completion-doc.png)
 ![user func completion](./asset/doc/user-func-completion.gif)
 
+## Planned Features
+
+- Find references.
+- Autoformatting.
+
 ## Configuration
 
-TODO add configuration steps here.
+You can configure the extension by [editing the settings inside of VS
+Code](https://code.visualstudio.com/docs/getstarted/settings#_settings-editor).
+![settings](https://github.com/kelly-lin/vscode-12dpl/assets/19686599/5edb575f-824d-4882-80e7-cb0f50459c27)
