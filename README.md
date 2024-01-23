@@ -30,6 +30,8 @@ user defined functions are provided if a comment block ends directly above the
 function declaration. Documentation can be in Markdown or plain text.
 
 ![hover support](https://github.com/kelly-lin/vscode-12dpl/assets/19686599/1e821cc2-b97c-4764-a0ad-e9aea7c296e5)
+
+12d Macro Library documentation shown on hover.
 ![lib hover](https://github.com/kelly-lin/vscode-12dpl/assets/19686599/f3124aaa-fdc5-447a-8fb9-7186820cb093)
 
 ### Autocompletion
@@ -49,3 +51,7 @@ Provide completion suggestions as you write your code.
 You can configure the extension by [editing the settings inside of VS
 Code](https://code.visualstudio.com/docs/getstarted/settings#_settings-editor).
 ![settings](https://github.com/kelly-lin/vscode-12dpl/assets/19686599/5edb575f-824d-4882-80e7-cb0f50459c27)
+
+## Contributing
+
+See [contributing](https://github.com/kelly-lin/12d-lang-server?tab=readme-ov-file#contributing).
