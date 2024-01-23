@@ -29,15 +29,15 @@ Works for built in 12d and user defined symbols. Function documentation for
 user defined functions are provided if a comment block ends directly above the
 function declaration. Documentation can be in Markdown or plain text.
 
-![hover support](./asset/doc/hover-user-func.gif)
-![lib hover](./asset/doc/lib-hover.gif)
+![hover support](https://github.com/kelly-lin/vscode-12dpl/assets/19686599/1e821cc2-b97c-4764-a0ad-e9aea7c296e5)
+![lib hover](https://github.com/kelly-lin/vscode-12dpl/assets/19686599/f3124aaa-fdc5-447a-8fb9-7186820cb093)
 
 ### Autocompletion
 
 Provide completion suggestions as you write your code.
 
-![lib completion](./asset/doc/lib-completion-doc.png)
-![user func completion](./asset/doc/user-func-completion.gif)
+![lib completion](https://github.com/kelly-lin/vscode-12dpl/assets/19686599/c8f9352d-9342-47ed-b40f-b0b061507c9c)
+![user func completion](https://github.com/kelly-lin/vscode-12dpl/assets/19686599/ef94af3f-3f11-4d93-8748-33c15e537da9)
 
 ## Planned Features
 
