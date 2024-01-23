@@ -20,24 +20,22 @@
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "Example configuration",
+      "title": "12dPL",
       "properties": {
-        "languageServerExample.maxNumberOfProblems": {
-          "scope": "resource",
-          "type": "number",
-          "default": 100,
-          "description": "Controls the maximum number of problems produced by the server."
-        },
-        "languageServerExample.trace.server": {
-          "scope": "window",
+        "12dpl.languageServerBinPath": {
           "type": "string",
-          "enum": [
-            "off",
-            "messages",
-            "verbose"
-          ],
-          "default": "off",
-          "description": "Traces the communication between VS Code and the language server."
+          "default": "/Users/kelly.lin/Repos/repoman/github.com/kelly-lin/12d-lang-server/12dls",
+          "description": "Filepath to the 12d language server binary file."
+        },
+        "12dpl.includesDir": {
+          "type": "string",
+          "default": "/Users/kelly.lin/Repos/repoman/github.com/kelly-lin/12d-lang-server/lang/includes",
+          "description": "Directory to resolve include directives."
+        },
+        "12dpl.enableLogging": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable logging of server request/response messages. Useful for debugging."
         }
       }
     },
