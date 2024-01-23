@@ -23,7 +23,7 @@ Jump to or peek at definition of symbol.
 Get symbol information (type, signature and documentation) on hover over symbol.
 Works for built in 12d and user defined symbols. Function documentation for
 user defined functions are provided if a comment block ends directly above the
-function declaration.
+function declaration. Documentation can be in Markdown or plain text.
 
 ![hover support](./asset/doc/hover-user-func.gif)
 ![lib hover](./asset/doc/lib-hover.gif)
