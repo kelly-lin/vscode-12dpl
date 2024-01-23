@@ -6,6 +6,10 @@ Language.
 Supports declarations across `#include` files if the `includesDir` is
 configured, see [configuration](#configuration).
 
+## Requirements
+
+- Visual Studio Code v1.75.0+.
+
 ## Features
 
 ### Go to definition
