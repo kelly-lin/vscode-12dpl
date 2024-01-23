@@ -16,7 +16,7 @@ configured, see [configuration](#configuration).
 
 Jump to or peek at definition of symbol.
 
-![go to definition](./asset/doc/go-to-definition.gif)
+![go to definition](https://github.com/kelly-lin/vscode-12dpl/assets/19686599/e8ef36a1-0aa3-45d2-a76b-4feccb0d7229)
 
 ### Hover support
 
