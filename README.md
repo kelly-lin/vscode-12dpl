@@ -12,6 +12,10 @@ configured, see [configuration](#configuration).
 
 ## Features
 
+### Syntax Highlighting
+
+![syntax highlighting](https://github.com/kelly-lin/vscode-12dpl/assets/19686599/51b6f6a1-040d-44ed-8787-3c8bcea855c3)
+
 ### Go to definition
 
 Jump to or peek at definition of symbol.
