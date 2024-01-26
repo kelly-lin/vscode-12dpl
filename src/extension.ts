@@ -83,7 +83,7 @@ export async function activate(context: ExtensionContext) {
   const isProd = context.extensionMode === ExtensionMode.Production;
   if (shouldDownloadServer(binPath, isProd)) {
     try {
-      downloadServer(binPath);
+      await downloadServer(binPath);
     } catch (e: any) {
       window.showErrorMessage(e.message);
       return;
