@@ -24,24 +24,21 @@ async function downloadServer(binPath: string) {
   writeFileSync(binPath, Buffer.from(buf));
 }
 
-function getBinDir(platform: "windows" | "linux"): string | undefined {
+function getBinDir(platform: "windows"): string | undefined {
   if (platform == "windows") {
-    if (process.env.PROGRAMFILES) {
-      return path.join(process.env.PROGRAMFILES, "12dls");
-    }
     if (process.env.SYSTEMDRIVE) {
       return path.join(process.env.SYSTEMDRIVE, "12dls");
     }
   }
-
-  if (platform == "linux") {
-    if (process.env.HOME) {
-      return path.join(process.env.HOME, ".local", "bin");
-    }
-  }
+  // TODO: support linux.
+  // if (platform == "linux") {
+  //   if (process.env.HOME) {
+  //     return path.join(process.env.HOME, ".local", "bin");
+  //   }
+  // }
 }
 
-function getDefaultBinPath(platform: "windows" | "linux"): string | undefined {
+function getDefaultBinPath(platform: "windows"): string | undefined {
   const binDir = getBinDir(platform);
   if (!binDir) {
     return;
@@ -71,9 +68,10 @@ function shouldDownloadServer(binPath: string, isProd: boolean) {
 
 export async function activate(context: ExtensionContext) {
   const wsConfig = workspace.getConfiguration("12dpl");
-  const platform = process.platform === "win32" ? "windows" : "linux";
-  const binPath =
-    wsConfig.get<string>("serverBinPath") ?? getDefaultBinPath(platform);
+  // TODO: support linux.
+  // const platform = process.platform === "win32" ? "windows" : "linux";
+  const platform = "windows";
+  const binPath = getDefaultBinPath(platform);
   if (!binPath) {
     window.showErrorMessage(
       "server bin path is unset and could not get default bin path"

@@ -22,14 +22,9 @@
       "type": "object",
       "title": "12dPL",
       "properties": {
-        "12dpl.languageServerBinPath": {
-          "type": "string",
-          "default": "/Users/kelly.lin/Repos/repoman/github.com/kelly-lin/12d-lang-server/12dls",
-          "description": "Filepath to the 12d language server binary file."
-        },
         "12dpl.includesDir": {
           "type": "string",
-          "default": "/Users/kelly.lin/Repos/repoman/github.com/kelly-lin/12d-lang-server/lang/includes",
+          "default": "C:\\Program Files\\12d\\12dmodel\\14.00\\set_ups",
           "description": "Directory to resolve include directives."
         },
         "12dpl.enableLogging": {
