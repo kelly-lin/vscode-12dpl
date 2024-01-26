@@ -60,6 +60,7 @@
     "@tsconfig/recommended": "^1.0.3",
     "@types/node": "^20.9.3",
     "@types/vscode": "^1.84.2",
+    "@vscode/vsce": "^2.23.0",
     "js-yaml": "^3.13.1",
     "typescript": "^5.3.2"
   }
