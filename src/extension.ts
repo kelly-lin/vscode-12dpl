@@ -1,5 +1,5 @@
 import path from "path";
-import fs, { writeFileSync } from "fs";
+import fs, { mkdirSync, writeFileSync } from "fs";
 import { window, workspace, ExtensionContext, ExtensionMode } from "vscode";
 
 import {
@@ -20,6 +20,7 @@ async function downloadServer(binPath: string) {
     );
   }
   const buf = await res.arrayBuffer();
+  mkdirSync(path.dirname(binPath), { recursive: true });
   writeFileSync(binPath, Buffer.from(buf));
 }
 
