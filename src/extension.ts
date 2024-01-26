@@ -99,9 +99,9 @@ export async function activate(context: ExtensionContext): Promise<void> {
       `the configured/default includes directory ${includesDir} does not exist, `
     );
   }
-  const enableLogging = wsConfig.get<boolean>("enableLogging") || false;
+  const logFilepath = wsConfig.get<string>("logFilepath");
   const args = [];
-  if (enableLogging) args.push("-d");
+  if (logFilepath) args.push("-l", logFilepath);
   if (includesDir) args.push("-i", includesDir);
   const serverOptions: ServerOptions = {
     run: {

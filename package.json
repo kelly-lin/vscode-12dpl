@@ -30,10 +30,10 @@
           "default": "",
           "description": "Directory to resolve include directives."
         },
-        "12dpl.enableLogging": {
-          "type": "boolean",
-          "default": false,
-          "description": "Enable logging of server request/response messages. Useful for debugging."
+        "12dpl.logFilepath": {
+          "type": "string",
+          "default": "",
+          "description": "Filepath for logging of server request/response messages. Useful for debugging."
         }
       }
     },
