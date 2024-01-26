@@ -53,10 +53,7 @@ let client: LanguageClient;
  * Downloads the server on production builds if the binary located at binPath
  * does not exist or is out of date.
  */
-function shouldDownloadServer(binPath: string, isProd: boolean): boolean {
-  if (!isProd) {
-    return false;
-  }
+function shouldDownloadServer(binPath: string): boolean {
   if (!fs.existsSync(binPath)) {
     return true;
   }
@@ -68,7 +65,7 @@ function shouldDownloadServer(binPath: string, isProd: boolean): boolean {
 
 function getDefaultIncludesDir(platform: "windows"): string {
   if (platform === "windows") {
-    return "C:\\Program Files\\12d\\12dmodel\\14.00\\set_ups";
+    return "C:\\12d\\includes";
   }
   return "";
 }
@@ -86,7 +83,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
     return;
   }
   const isProd = context.extensionMode === ExtensionMode.Production;
-  if (shouldDownloadServer(binPath, isProd)) {
+  if (isProd && shouldDownloadServer(binPath)) {
     try {
       await downloadServer(binPath);
     } catch (e: any) {
