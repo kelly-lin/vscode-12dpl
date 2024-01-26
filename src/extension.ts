@@ -8,7 +8,6 @@ import {
   ServerOptions,
 } from "vscode-languageclient/node";
 import { execSync } from "child_process";
-import { Readable } from "stream";
 
 const SERVER_VERSION = "0.1.0-beta";
 const SERVER_DOWNLOAD_URL = `https://github.com/kelly-lin/12d-lang-server/releases/download/v${SERVER_VERSION}/12dls.exe`;
