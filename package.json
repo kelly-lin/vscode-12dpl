@@ -24,7 +24,7 @@
       "properties": {
         "12dpl.includesDir": {
           "type": "string",
-          "default": "C:\\Program Files\\12d\\12dmodel\\14.00\\set_ups",
+          "default": "",
           "description": "Directory to resolve include directives."
         },
         "12dpl.enableLogging": {

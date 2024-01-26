@@ -12,7 +12,7 @@ import { execSync } from "child_process";
 const SERVER_VERSION = "0.1.0-beta";
 const SERVER_DOWNLOAD_URL = `https://github.com/kelly-lin/12d-lang-server/releases/download/v${SERVER_VERSION}/12dls.exe`;
 
-async function downloadServer(binPath: string) {
+async function downloadServer(binPath: string): Promise<void> {
   const res = await fetch(SERVER_DOWNLOAD_URL);
   if (!res.ok) {
     throw new Error(
@@ -53,7 +53,7 @@ let client: LanguageClient;
  * Downloads the server on production builds if the binary located at binPath
  * does not exist or is out of date.
  */
-function shouldDownloadServer(binPath: string, isProd: boolean) {
+function shouldDownloadServer(binPath: string, isProd: boolean): boolean {
   if (!isProd) {
     return false;
   }
@@ -66,7 +66,14 @@ function shouldDownloadServer(binPath: string, isProd: boolean) {
   return currentVersion !== SERVER_VERSION;
 }
 
-export async function activate(context: ExtensionContext) {
+function getDefaultIncludesDir(platform: "windows"): string {
+  if (platform === "windows") {
+    return "C:\\Program Files\\12d\\12dmodel\\14.00\\set_ups";
+  }
+  return "";
+}
+
+export async function activate(context: ExtensionContext): Promise<void> {
   const wsConfig = workspace.getConfiguration("12dpl");
   // TODO: support linux.
   // const platform = process.platform === "win32" ? "windows" : "linux";
@@ -88,8 +95,14 @@ export async function activate(context: ExtensionContext) {
     }
   }
 
-  const includesDir = wsConfig.get<string>("includesDir") ?? "";
-  const enableLogging = wsConfig.get<boolean>("enableLogging") ?? false;
+  const includesDir =
+    wsConfig.get<string>("includesDir") || getDefaultIncludesDir(platform);
+  if (!fs.existsSync(includesDir)) {
+    window.showWarningMessage(
+      `the configured/default includes directory ${includesDir} does not exist, `
+    );
+  }
+  const enableLogging = wsConfig.get<boolean>("enableLogging") || false;
   const args = [];
   if (enableLogging) args.push("-d");
   if (includesDir) args.push("-i", includesDir);
@@ -103,9 +116,7 @@ export async function activate(context: ExtensionContext) {
       args,
     },
   };
-  // Options to control the language client
   const clientOptions: LanguageClientOptions = {
-    // Register the server for plain text documents
     documentSelector: [{ scheme: "file", language: "12dpl" }],
     synchronize: {
       // Notify the server about file changes to '.clientrc files contained in the workspace
