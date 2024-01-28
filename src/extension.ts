@@ -63,13 +63,6 @@ function shouldDownloadServer(binPath: string): boolean {
   return currentVersion !== SERVER_VERSION;
 }
 
-function getDefaultIncludesDir(platform: "windows"): string {
-  if (platform === "windows") {
-    return "C:\\12d\\includes";
-  }
-  return "";
-}
-
 export async function activate(context: ExtensionContext): Promise<void> {
   const wsConfig = workspace.getConfiguration("12dpl");
   // TODO: support linux.
@@ -93,13 +86,13 @@ export async function activate(context: ExtensionContext): Promise<void> {
   }
 
   const includesDir =
-    wsConfig.get<string>("includesDir") || getDefaultIncludesDir(platform);
+    wsConfig.get<string>("includesDir") ?? "";
   if (!fs.existsSync(includesDir)) {
     window.showWarningMessage(
       `the configured/default includes directory ${includesDir} does not exist, `
     );
   }
-  const logFilepath = wsConfig.get<string>("logFilepath");
+  const logFilepath = wsConfig.get<string>("logFilepath") ?? "";
   const args = [];
   if (logFilepath) args.push("-l", logFilepath);
   if (includesDir) args.push("-i", includesDir);
