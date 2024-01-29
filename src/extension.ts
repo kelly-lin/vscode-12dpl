@@ -3,6 +3,7 @@ import fs, { mkdirSync, writeFileSync } from "fs";
 import { window, workspace, ExtensionContext, ExtensionMode } from "vscode";
 
 import {
+  Executable,
   LanguageClient,
   LanguageClientOptions,
   ServerOptions,
@@ -12,6 +13,11 @@ import { execSync } from "child_process";
 const SERVER_VERSION = "0.1.0-beta";
 const SERVER_DOWNLOAD_URL = `https://github.com/kelly-lin/12d-lang-server/releases/download/v${SERVER_VERSION}/12dls.exe`;
 
+let client: LanguageClient;
+
+/**
+ * Download the server to provided bin path.
+ */
 async function downloadServer(binPath: string): Promise<void> {
   const res = await fetch(SERVER_DOWNLOAD_URL);
   if (!res.ok) {
@@ -24,33 +30,36 @@ async function downloadServer(binPath: string): Promise<void> {
   writeFileSync(binPath, Buffer.from(buf));
 }
 
-function getBinDir(platform: "windows"): string | undefined {
+/**
+ * Returns the default server binary directory for the given platform. Throws an
+ * error if the default directory could not be obtained. This can happen if
+ * dependent environment variables are unset.
+ */
+function getDefaultBinDir(platform: "windows" | "unix"): string {
   if (platform == "windows") {
     if (process.env.SYSTEMDRIVE) {
       return path.join(process.env.SYSTEMDRIVE, "12dls");
     }
+    throw new Error("could not get system drive environment variable");
   }
-  // TODO: support linux.
-  // if (platform == "linux") {
-  //   if (process.env.HOME) {
-  //     return path.join(process.env.HOME, ".local", "bin");
-  //   }
-  // }
-}
-
-function getDefaultBinPath(platform: "windows"): string | undefined {
-  const binDir = getBinDir(platform);
-  if (!binDir) {
-    return;
+  if (platform == "unix") {
+    if (process.env.HOME) {
+      return path.join(process.env.HOME, ".local", "bin");
+    }
+    throw new Error("could not get home environment variable");
   }
-  const binName = platform == "windows" ? "12dls.exe" : "12dls";
-  return path.join(binDir, binName);
+  throw new Error("unsupported platform");
 }
-
-let client: LanguageClient;
 
 /**
- * Downloads the server on production builds if the binary located at binPath
+ * Append binary name to the provided directory path for the given platform.
+ */
+function appendBinFilename(dir: string, platform: "windows" | "unix"): string {
+  return path.join(dir, platform === "windows" ? "12dls.exe" : "12dls");
+}
+
+/**
+ * Downloads the server on production builds if the binary located at bin path
  * does not exist or is out of date.
  */
 function shouldDownloadServer(binPath: string): boolean {
@@ -65,16 +74,16 @@ function shouldDownloadServer(binPath: string): boolean {
 
 export async function activate(context: ExtensionContext): Promise<void> {
   const wsConfig = workspace.getConfiguration("12dpl");
-  // TODO: support linux.
-  // const platform = process.platform === "win32" ? "windows" : "linux";
-  const platform = "windows";
-  const binPath = getDefaultBinPath(platform);
-  if (!binPath) {
-    window.showErrorMessage(
-      "server bin path is unset and could not get default bin path"
-    );
+  const platform = process.platform === "win32" ? "windows" : "unix";
+  let binDir = "";
+  try {
+    binDir =
+      wsConfig.get<string>("serverBinDirectory") || getDefaultBinDir(platform);
+  } catch (e: any) {
+    window.showErrorMessage(e.message);
     return;
   }
+  const binPath = appendBinFilename(binDir, platform);
   const isProd = context.extensionMode === ExtensionMode.Production;
   if (isProd && shouldDownloadServer(binPath)) {
     try {
@@ -84,9 +93,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
       return;
     }
   }
-
-  const includesDir =
-    wsConfig.get<string>("includesDir") ?? "";
+  const includesDir = wsConfig.get<string>("includesDir") ?? "";
   if (!fs.existsSync(includesDir)) {
     window.showWarningMessage(
       `the configured/default includes directory ${includesDir} does not exist, `
@@ -96,15 +103,13 @@ export async function activate(context: ExtensionContext): Promise<void> {
   const args = [];
   if (logFilepath) args.push("-l", logFilepath);
   if (includesDir) args.push("-i", includesDir);
+  const executable: Executable = {
+    command: binPath,
+    args,
+  };
   const serverOptions: ServerOptions = {
-    run: {
-      command: binPath,
-      args,
-    },
-    debug: {
-      command: binPath,
-      args,
-    },
+    run: executable,
+    debug: executable,
   };
   const clientOptions: LanguageClientOptions = {
     documentSelector: [{ scheme: "file", language: "12dpl" }],

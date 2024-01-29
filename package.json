@@ -34,6 +34,11 @@
           "type": "string",
           "default": "",
           "description": "Filepath for logging of server request/response messages. Useful for debugging."
+        },
+        "12dpl.serverBinDirectory": {
+          "type": "string",
+          "default": "",
+          "description": "Filepath to directory containing the language server binary. Defaults to \"C:\\12dls\\12dls.exe\" on Windows and \"~/.local/bin/12dls\" on Unix."
         }
       }
     },
