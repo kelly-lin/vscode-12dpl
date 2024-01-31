@@ -4,7 +4,7 @@
     "name": "Kelly Lin"
   },
   "publisher": "kelly-lin",
-  "displayName": "12dpl",
+  "displayName": "12dPL",
   "description": "12d Programming Language support for Visual Studio Code",
   "repository": {
     "url": "https://github.com/kelly-lin/vscode-12dpl"
