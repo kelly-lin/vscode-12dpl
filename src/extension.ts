@@ -93,6 +93,10 @@ export async function activate(context: ExtensionContext): Promise<void> {
       return;
     }
   }
+  if (!fs.existsSync(binPath)) {
+    window.showErrorMessage(`no language server binary found at ${binPath}`);
+    return;
+  }
   const includesDir = wsConfig.get<string>("includesDir") ?? "";
   if (!fs.existsSync(includesDir)) {
     window.showWarningMessage(
