@@ -4,8 +4,7 @@ Visual Studio Code Extension providing language support for the 12d Programming
 Language.
 
 Supports declarations across `#include` files if the `Includes Dir` setting is
-configured. The includes dir defaults to `C:\Program Files(x86)\12d\includes`,
-if you would like to configure this to another directory, see [configuration](#configuration).
+configured, see [configuration](#configuration).
 
 ## Requirements
 
