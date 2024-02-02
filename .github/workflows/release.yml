@@ -18,6 +18,7 @@ jobs:
 
       - name: Publish to Visual Studio Marketplace
         uses: HaaLeo/publish-vscode-extension@v1
+        id: publishToVSM
         with:
           pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
           registryUrl: https://marketplace.visualstudio.com
@@ -26,7 +27,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: ${{ steps.publishToOpenVSX.outputs.vsixPath }}
+          files: ${{ steps.publishToVSM.outputs.vsixPath }}
           draft: true
           fail_on_unmatched_files: true
           generate_release_notes: true
