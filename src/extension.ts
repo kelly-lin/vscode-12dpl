@@ -10,7 +10,7 @@ import {
 } from "vscode-languageclient/node";
 import { execSync } from "child_process";
 
-const SERVER_VERSION = "v0.1.0-beta.1";
+const SERVER_VERSION = "v0.1.0-beta.2";
 const SERVER_DOWNLOAD_URL = `https://github.com/kelly-lin/12d-lang-server/releases/download/${SERVER_VERSION}/12dls.exe`;
 
 let client: LanguageClient;
