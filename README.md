@@ -22,6 +22,10 @@ Jump to or peek at definition of symbol.
 
 ![go to definition](https://github.com/kelly-lin/vscode-12dpl/assets/19686599/e8ef36a1-0aa3-45d2-a76b-4feccb0d7229)
 
+### Find references
+
+Find references of selected symbol in the context of it's scope.
+
 ### Hover support
 
 Get symbol information (type, signature and documentation) on hover over symbol.
@@ -43,7 +47,6 @@ Provide completion suggestions as you write your code.
 
 ## Planned Features
 
-- Find references.
 - Autoformatting.
 
 ## Configuration
