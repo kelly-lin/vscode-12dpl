@@ -49,6 +49,10 @@
         "extensions": [
           ".4dm"
         ],
+        "icon": {
+          "light": "asset/12dpl.png",
+          "dark": "asset/12dpl.png"
+        },
         "configuration": "./language-configuration.json"
       }
     ],
