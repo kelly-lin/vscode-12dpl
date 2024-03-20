@@ -103,7 +103,7 @@ export async function activate(context: ExtensionContext): Promise<void> {
       `the configured/default includes directory ${includesDir} does not exist, `
     );
   }
-  const logFilepath = wsConfig.get<string>("logFilepath") ?? "";
+  const logFilepath = wsConfig.get<string>("debug.logFilepath") ?? "";
   const args = [];
   if (logFilepath) args.push("-l", logFilepath);
   if (includesDir) args.push("-i", includesDir);

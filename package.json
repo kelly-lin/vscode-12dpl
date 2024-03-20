@@ -9,7 +9,7 @@
   "repository": {
     "url": "https://github.com/kelly-lin/vscode-12dpl"
   },
-  "version": "0.1.2",
+  "version": "0.1.3",
   "icon": "asset/12dpl.png",
   "engines": {
     "vscode": "^1.84.2"
@@ -31,15 +31,15 @@
           "default": "",
           "description": "Directory to resolve include directives."
         },
-        "12dpl.logFilepath": {
-          "type": "string",
-          "default": "",
-          "description": "Filepath for logging of server request/response messages. Useful for debugging."
-        },
         "12dpl.serverBinDirectory": {
           "type": "string",
           "default": "",
           "description": "Filepath to directory containing the language server binary. Defaults to \"C:\\12dls\" on Windows and \"~/.local/bin\" on Unix."
+        },
+        "12dpl.debug.logFilepath": {
+          "type": "string",
+          "default": "",
+          "description": "Filepath for logging of server request/response messages. Useful for debugging."
         }
       }
     },
