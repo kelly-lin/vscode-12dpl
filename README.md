@@ -29,9 +29,11 @@ Find references of selected symbol in the context of it's scope.
 ### Hover support
 
 Get symbol information (type, signature and documentation) on hover over symbol.
-Works for built in 12d and user defined symbols. Function documentation for
-user defined functions are provided if a comment block ends directly above the
-function declaration. Documentation can be in Markdown or plain text.
+Works for built in 12d and user defined symbols.
+
+[doxygen docblock](https://www.doxygen.nl/manual/docblocks.html) for
+documentation is supported for user defined functions if a comment block ends
+directly above the function declaration.
 
 ![hover support](https://github.com/kelly-lin/vscode-12dpl/assets/19686599/1e821cc2-b97c-4764-a0ad-e9aea7c296e5)
 
@@ -45,9 +47,16 @@ Provide completion suggestions as you write your code.
 ![lib completion](https://github.com/kelly-lin/vscode-12dpl/assets/19686599/c8f9352d-9342-47ed-b40f-b0b061507c9c)
 ![user func completion](https://github.com/kelly-lin/vscode-12dpl/assets/19686599/ef94af3f-3f11-4d93-8748-33c15e537da9)
 
+## Experimental Features
+
+Below are experimental features provided by the language server. It is
+incomplete and may cause data loss, use at your own risk.
+
+- Autoformatting: `Ctrl + Shift + P` and type `Format Document`.
+
 ## Planned Features
 
-- Autoformatting.
+- Support relative paths for include statements.
 
 ## Configuration
 
