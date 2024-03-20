@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Tests to see if the server version can be fetched.
+# Tests to see if the server version can be fetched, exits with 0 on success.
 #
 # Not the most magnificent test script ever written but has zero dependencies
 # and is very simple and effective.
