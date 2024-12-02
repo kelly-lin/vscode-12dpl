@@ -9,7 +9,7 @@
   "repository": {
     "url": "https://github.com/kelly-lin/vscode-12dpl"
   },
-  "version": "0.1.5",
+  "version": "0.1.6",
   "icon": "asset/12dpl.png",
   "engines": {
     "vscode": "^1.84.2"

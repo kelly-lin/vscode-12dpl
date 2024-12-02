@@ -11,7 +11,8 @@ import {
 import { execSync } from "child_process";
 
 const SERVER_VERSION = "v0.1.0-beta.4";
-const SERVER_DOWNLOAD_URL = `https://github.com/kelly-lin/12d-lang-server-dist/releases/download/${SERVER_VERSION}/12dls.exe`;
+const BIN_NAME = process.platform === "win32" ? "12dls.exe" : "12dls"
+const SERVER_DOWNLOAD_URL = `https://github.com/kelly-lin/12d-lang-server-dist/releases/download/${SERVER_VERSION}/${BIN_NAME}`;
 
 let client: LanguageClient;
 
